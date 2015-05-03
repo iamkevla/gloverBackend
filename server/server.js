@@ -56,6 +56,14 @@ var proxy = require('./middleware/proxy');
 var proxyOptions = require('./middleware/proxy/config.json');
 app.middleware('routes:after', proxy(proxyOptions));
 
+
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+app.post('/upload', multipartMiddleware, function(req) {
+  console.log(req.body, req.files);
+  // don't forget to delete all req.files when done
+});
+
 app.middleware('files',
   loopback.static(path.join(__dirname, '../client/public')));
 app.middleware('files', '/admin',
