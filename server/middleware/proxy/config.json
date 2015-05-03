@@ -1,0 +1,5 @@
+{
+  "rules": [
+    "^/api/(.*)$ https://dealerportaltest.m2.com.au/api/$1 [P]"
+  ]
+}
